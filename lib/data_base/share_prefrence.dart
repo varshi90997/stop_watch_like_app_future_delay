@@ -5,13 +5,13 @@ class SharePreference
 ///---------------------->add data
 
   //Saving String value
-  addStringToSF(String data) async {
+   addStringToSF(String key,String data) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('stringValue', data);
+    prefs.setString(key, data);
   }
 
   //Saving int value
-  addIntToSF(int data) async {
+   addIntToSF(int data) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt('intValue', data);
   }
@@ -27,14 +27,12 @@ class SharePreference
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('boolValue', data);
   }
-
-
   ///------------------------------>  Read data
-  getStringValuesSF(String data) async {
+  Future<String> getStringValuesSF(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
-    String? stringValue = prefs.getString('stringValue');
-    return stringValue;
+    String? stringValue = prefs.getString(key??"");
+    return stringValue ??"";
   }
 
   getBoolValuesSF(String data) async {
