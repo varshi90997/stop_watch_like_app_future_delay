@@ -124,9 +124,7 @@ class TimerPage extends StatelessWidget {
                     timerController.storeData.value =
                         timerController.dataS.value.toString();
                   }
-
                   await sharePreference.addStringToSF("storeData1", timerController.storeData.value);
-
                 },
               ),
             ],
