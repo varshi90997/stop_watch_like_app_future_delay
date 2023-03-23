@@ -9,13 +9,19 @@ import 'package:stop_watch_like_app/data_base/share_prefrence.dart';
 import 'package:stop_watch_like_app/modules/timer_controller.dart';
 import 'package:stop_watch_like_app/widget/custom_elevatedbutton.dart';
 
-class TimerPage extends StatelessWidget {
+class TimerPage extends StatefulWidget {
   TimerPage({Key? key}) : super(key: key);
 
-  TimerController timerController = Get.put(TimerController());
-  SharePreference sharePreference = SharePreference();
-  String name = "";
+  @override
+  State<TimerPage> createState() => _TimerPageState();
+}
 
+class _TimerPageState extends State<TimerPage> {
+  final TimerController timerController = Get.put(TimerController());
+
+  SharePreference sharePreference = SharePreference();
+
+  String name = "";
   boolToIntToBool()
   {
     timerController.checkDoubleOrNot.value == false
@@ -24,6 +30,7 @@ class TimerPage extends StatelessWidget {
         : timerController.data.value =
         timerController.dataS.value.toInt();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,6 +41,7 @@ class TimerPage extends StatelessWidget {
           () => Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+
               Text(
                   "${timerController.checkDoubleOrNot.value ? timerController.dataS.value.toStringAsFixed(1) : timerController.data.value}",
                   style: const TextStyle(fontSize: 40,color: Colors.white)),
@@ -80,7 +88,7 @@ class TimerPage extends StatelessWidget {
               CustomElevatedButton(
                 text: "20 X",
                 onPressed: () async {
-                  
+
                   timerController.stop.value = false;
                   timerController.start.value = false;
                   timerController.twentyX.value = true;
@@ -106,6 +114,8 @@ class TimerPage extends StatelessWidget {
                   Future.delayed(const Duration(seconds: 1)).then((value) {
                     timerController.dataS.value = 0.0;
                     timerController.data.value = 0;
+
+                    timerController.sharePrefWhenOpenApp();
                   });
                 },
               ),
@@ -114,17 +124,10 @@ class TimerPage extends StatelessWidget {
                 text: "Stop",
                 onPressed: () async {
                   timerController.stop.value = true;
-                  Future.delayed(const Duration(seconds: 1));
-
-                  if (timerController.data.value >=
-                      timerController.dataS.value) {
-                    timerController.storeData.value =
-                        timerController.data.value.toString();
-                  } else {
-                    timerController.storeData.value =
-                        timerController.dataS.value.toString();
-                  }
-                  await sharePreference.addStringToSF("storeData1", timerController.storeData.value);
+                  await Future.delayed(
+                    const Duration(seconds: 1),
+                  );
+                  timerController.sharePrefWhenOpenApp();
                 },
               ),
             ],

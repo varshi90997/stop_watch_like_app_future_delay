@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharePreference
@@ -23,7 +25,7 @@ class SharePreference
   }
 
   //Saving boolean value
-  addBoolToSF(bool data) async {
+  addBoolToSF(String key,bool data) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('boolValue', data);
   }
@@ -35,11 +37,13 @@ class SharePreference
     return stringValue ??"";
   }
 
-  getBoolValuesSF(String data) async {
+   Future<bool> getBoolValuesSF(String data) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return bool
-    bool? boolValue = prefs.getBool('boolValue');
-    return boolValue;
+    // bool? boolValue = prefs.getBool('boolValue');
+    bool? boolValue = prefs.getBool(data);
+
+    return boolValue ?? false;
   }
 
   getIntValuesSF(String data) async {
