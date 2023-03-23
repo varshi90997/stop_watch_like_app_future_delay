@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stop_watch_like_app/modules/time_converter.dart';
+import 'package:stop_watch_like_app/modules/timer_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,8 +22,8 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            // home:MyHomePageS(),
-            home: Time_of_day(),
+            home:TimerPage(),
+            // home: Time_of_day(),
           );
         }
     );
