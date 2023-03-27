@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.stop_watch_like_app">
+    package="com.example.stop_watch_like_app"
+    >
    <application
         android:label="stop_watch_like_app"
         android:name="${applicationName}"
@@ -31,4 +32,5 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+
 </manifest>
