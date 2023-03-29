@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stop_watch_like_app/data_base/share_prefrence.dart';
-import 'package:stop_watch_like_app/modules/timer_controller.dart';
+import 'package:stop_watch_like_app/modules/controller/timer_controller.dart';
 import 'package:stop_watch_like_app/widget/custom_elevatedbutton.dart';
 
 class TimerPage extends StatefulWidget {

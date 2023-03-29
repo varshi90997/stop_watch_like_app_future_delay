@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:stop_watch_like_app/module_minig_real_logic/timer_real_page.dart';
-import 'package:stop_watch_like_app/modules/all_pair_page.dart';
-import 'package:stop_watch_like_app/modules/timer_controller.dart';
-import 'package:stop_watch_like_app/modules/timer_page.dart';
+import 'package:stop_watch_like_app/module_minig_real_logic/all_pair_Page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +21,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home:RealTimerPage(),
+            home:AllPairPageSec(),
             // home: AllPairPage(),
           );
         }
